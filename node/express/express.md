@@ -312,12 +312,12 @@ app.use('/...', route)
 
 此时对应的文件内，路由会默认添加此前缀
 
-
 #### 10. 模板引擎 ejs
 
 用于标签和数据分离
 
-待更新
+见 [ejs](../ejs/ejs.md)
+
 
 
 #### 11. express-generator
@@ -331,8 +331,6 @@ npm i express-generator
 ```
 express -e dist
 ```
-
-
 
 #### 杂项
 

@@ -2,6 +2,7 @@
 
 ### jsx
 
+
 jsx的基本语法规则：
 
 1. 定义虚拟DOM，是一个js对象，不是字符串，因此可以直接写标签，不写引号
@@ -14,7 +15,7 @@ jsx的基本语法规则：
    1. 小写字母，转换为对应的html同名元素，无则报错
    2. 大写字母，转换为对应的组件，未定义则报错
 
-#### 1. jsx中使用js表达式
+#### 1. jsx中插入js变量
 
 ```javascript
 const name = 'd'
@@ -22,13 +23,31 @@ const name = 'd'
 <h1>你好，我叫{name}</h1>   //    <h1>你好,我叫d</h1>
 ```
 
-可以使用的表达式：
+在 大括号 中插入js标识符（变量）
 
-1. 字符串、数值、布尔值、null、undefined、object（ [] / {} ）
-2. 1 + 2、'abc'.split('')、['a', 'b'].join('-')
-3. fn()
+可以使用的变量：
 
-#### 2. 列表渲染
+1. 一般变量 number string array undefined null boolean object
+2. 表达式 1 + 2、'abc'.split('')、['a', 'b'].join('-')
+3. 函数 fn()
+
+[注意：js变量作为标签的内容文本时的显示情况](./04-补充.md)
+
+#### 2. jsx中绑定一般属性
+
+在jsx中绑定基本属性：同样使用大括号
+
+```
+render() {
+  const tvalue = 'tvalue'
+  const h2value = "我是标题"
+  return (
+    <h2 title={tvalue}>{h2value}</h2>
+  )
+}
+```
+
+#### 3. 列表渲染
 
 对应于vue的 `v-for`在react中可以直接使用js函数，如 `map`进行遍历
 
@@ -52,7 +71,7 @@ function App()
 export default App
 ```
 
-#### 3. 条件渲染
+#### 4. 条件渲染
 
 实际上是使用 三元运算符 或 `&&` 作为js表达式 在标签中实现
 
@@ -60,7 +79,7 @@ export default App
 {flag ? <span>this is span</span> : null}
 ```
 
-#### 4. 样式
+#### 5. 样式(style, className)
 
 内联样式的写法：由于需要的样式是一个 js对象， 因此可以抽离
 
@@ -72,6 +91,7 @@ function App() {
   return (
     <div className="App">
       <div style={ styleObj }>this is a div</div>
+      <div style={{ color: "red" }}>this is a div</div>
     </div>
   )
 }
@@ -100,7 +120,26 @@ function App() {
 export default App
 ```
 
+动态绑定css的其它方法
+
+```
+render() {
+  const cssValue = `abc, sda, ${isActive ? active : ''}`
+  const cssValue2 = ['abc', 'sda']
+  if(isActive) {cssValue2.push('activate')}
+
+  return (
+    <h2 className = {cssValue}></h2>
+    <h2 className = {cssValue2.join(" ")}></h2>
+  )
+}
+```
 
 
 #### jsx的注释
 
+采用引入 `js` 代码块，在代码块中使用 `js` 的注释方式实现 `jsx` 的注释，即
+
+```jsx
+{/**/}
+```
