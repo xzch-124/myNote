@@ -2,13 +2,12 @@
 
 ### jsx
 
-
 jsx的基本语法规则：
 
 1. 定义虚拟DOM，是一个js对象，不是字符串，因此可以直接写标签，不写引号
 2. 在虚拟DOM的标签中使用js表达式，要添加 `{}`
-3. 样式的类名使用 `className`;react18支持 `class`
-4. 若使用内联样式：`style={{key:value}}`外层表示js表达式写在 `{}`；内存表示写入的样式是一个js对象
+3. 样式的类名使用 `className`; react18支持 `class`
+4. 若使用内联样式：`style={{key:value}}` 外层表示js表达式写在 `{}`；内层表示写入的样式是一个js对象
 5. 一个虚拟DOM只有一个根标签，如果没有根节点，可以使用 `<></>`（幽灵节点）替代
 6. 允许跨行，但要使用 `()`
 7. 标签首字母
@@ -122,7 +121,7 @@ export default App
 
 动态绑定css的其它方法
 
-```
+```jsx
 render() {
   const cssValue = `abc, sda, ${isActive ? active : ''}`
   const cssValue2 = ['abc', 'sda']
@@ -134,7 +133,6 @@ render() {
   )
 }
 ```
-
 
 #### jsx的注释
 
